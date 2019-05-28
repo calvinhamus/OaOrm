@@ -3,27 +3,15 @@
 
 class OrmFactory
 {
-//  string dbConnectionString;
- string dbConnectionString = "DSN=mydb;UID=sa;PWD=***;";
+
+ string dbConnectionString;// = "DSN=mydb;UID=sa;PWD=****;";
   public void Init(string odbc, string user, string pw)
   {
-  //  dbConnectionString = "DSN="+odbc+";UID="+user+";PWD="+pw+";";
+    dbConnectionString = "DSN="+odbc+";UID="+user+";PWD="+pw+";";
   }
   public void StartOrm(string dbName)
   {
-    /*SELECT TABLE_NAME
-    FROM INFORMATION_SCHEMA.TABLES
-    WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG='Casthouse'
 
-    SELECT TABLE_NAME
-    FROM INFORMATION_SCHEMA.TABLES
-    WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG='Casthouse'
-    */
-    /*
-    SELECT COLUMN_NAME, DATA_TYPE
-    FROM INFORMATION_SCHEMA.COLUMNS
-    WHERE table_name = 'missions'
-    */
     string tablesQuery = " SELECT TABLE_NAME" +
     " FROM INFORMATION_SCHEMA.TABLES"+
     " WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG='"+dbName+"'";

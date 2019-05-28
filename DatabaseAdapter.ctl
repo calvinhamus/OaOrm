@@ -1,8 +1,8 @@
 #uses "rdb"
-#uses "helper"
+
 class DatabaseAdapter
 {
-  string dbConnectionString = "DSN=mydb;UID=sa;PWD=****;";
+  string dbConnectionString;// = "DSN=mydb;UID=sa;PWD=***;";
   string dbName;
   public DatabaseAdapter(string conString,string db)
   {
@@ -108,5 +108,50 @@ class DatabaseAdapter
     rdbClose(db);
 
     return result;
+  }
+  mapping getFields(string data, string keyField, bool ignoreKey = true)
+  {
+    //["Step: StepId:257 | ActivityId:2 | StepOrder:14 | RecipeId:1 | StepDescription: | StepInstances: | r:RecipeId:0 | RecipeName: | FurnaceId:0"]
+    //string s = (string) data;
+    dyn_string split = strsplit(data,"|");
+    string fields = "";
+    string values = "";
+    for(int i = 1; i <= dynlen(split);i++)
+    {
+        dyn_string fieldSplit = strsplit(split[i],":");
+        if(ignoreKey && keyField == fieldSplit[1] || dynlen(fieldSplit) < 2)continue;
+
+        fields = fields + " "+ fieldSplit[1] + ",";
+        values = values + " '"+fieldSplit[2] + "',";
+    }
+    string sFields = substr(fields,1, strlen(fields)-2);
+    string sValues = substr(values,1, strlen(values)-2);
+    mapping map;
+    map["fields"] = sFields;
+    map["values"] = sValues;
+    return map;
+  }
+  string getSetValue(string data, string keyField)
+  {
+    DebugN("DATA: "+ data);
+        dyn_string split = strsplit(data,"|");
+        string fields = "";
+        string values = "";
+        string s;
+        for(int i = 1; i <= dynlen(split);i++)
+        {
+            dyn_string fieldSplit = strsplit(split[i],":");
+            if(keyField == fieldSplit[1] || dynlen(fieldSplit) < 2)continue;
+            string trimmed = strrtrim(fieldSplit[2]," ");
+            //if( i > 1){
+             // s = s +" , " ;
+           // }
+            s = s + " "+fieldSplit[1] + "  = '"+trimmed+"',";
+        }
+       // DebugN("Len "+ strlen(s));
+        DebugN("STRING "+ s);
+        string ss = substr(s,1, strlen(s)-2);
+        return ss;
+
   }
 };

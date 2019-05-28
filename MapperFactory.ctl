@@ -26,7 +26,7 @@ class MapperFactory
   }
   public void addProperty(string propName, int y)
   {
-      mapperString = mapperString + " x. "+propName+" = entities[i]["+y+"];\n";
+      mapperString = mapperString + " x."+propName+" = entities[i]["+y+"];\n";
   }
   public void addVirtual(string virtualModel)
   {
@@ -47,14 +47,15 @@ class MapperFactory
   }
   private string createSingle()
   {
-    " public "+_className+" single(string fields = \"*\", dyn_string where= \"\") \n"+
-  " { \n"+
+    string s = " public "+_className+" single(string fields = \"*\", dyn_string where= \"\") \n"+
+    " { \n"+
     " dyn_anytype result; \n" +
     " "+_className+" r; \n"+
     " result = find(fields, where); \n" +
     " r = result[1]; \n" +
     " return r; \n"+
-  " } \n";
+    " } \n";
+     return s;
   }
 
 
