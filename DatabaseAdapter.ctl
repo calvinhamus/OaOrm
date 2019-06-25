@@ -4,6 +4,7 @@ class DatabaseAdapter
 {
   string dbConnectionString;// = "DSN=mydb;UID=sa;PWD=***;";
   string dbName;
+
   public DatabaseAdapter(string conString,string db)
   {
     dbConnectionString = conString;

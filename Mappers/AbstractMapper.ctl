@@ -5,7 +5,7 @@
 
 class AbstractMapper
 {
-  protected DatabaseAdapter sAdapter;
+  protected DatabaseAdapter sAdapter = DatabaseAdapter("","");
   protected string sTable;
   protected mapping sEntityClass;
 
