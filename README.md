@@ -21,7 +21,7 @@ From any panel in your application simply create an instance of the OrmFactory t
 # Disclaimer
 I built this to help with the SQL interaction inside of WinCC OA, but there are limitations to these components and I only consider this to be an Alpha product.  There is possibly more than can be done to this to make it better but I thought it would be cool to release it to the community and see if others have ideas to make it better.  This code also comes as is and is completely open source.
 # Limitations
-•	Currently does not auto create sub classes, this functionality an be added in but it needs to be hand added.
+•	Currently does not auto create sub classes, this functionality can be added in but it needs to be hand added.
 •	Datetimes saving to the SQL server has some issues.
 •	If you do incorporate sub classes a View Model will be needed because converting a class to a string with sub classes makes the update function confused.
 •	Currently the OrmFactory is hard coded to a specific file path and needs to be more dynamic.
