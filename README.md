@@ -19,7 +19,7 @@ This is where the brunt of the logic actually happens.  In these classes, one fo
 From any panel in your application simply create an instance of the OrmFactory then call the Init function, passing in the name of the odbc connection, the database user and the database password.  Then call the StartOrm function passing the name of the database you want to map out.  Doing this will create the Models and the Concrete mappers needed to run the ORM.  You will need to refresh the project folders to see the files that were created.
 
 # Disclaimer
-I built this to help with the SQL interaction inside of WinCC OA, but there are limitations to these components and I only consider this to be an Alpha product.  There is possibly more than can be done to this to make it better but I thought it would be cool to release it to the community and see if others have ideas to make it better.  This code also comes as is and is completely open source.   All the code can be found at https://github.com/calvinhamus/OaOrm.
+I built this to help with the SQL interaction inside of WinCC OA, but there are limitations to these components and I only consider this to be an Alpha product.  There is possibly more than can be done to this to make it better but I thought it would be cool to release it to the community and see if others have ideas to make it better.  This code also comes as is and is completely open source.
 # Limitations
 •	Currently does not auto create sub classes, this functionality an be added in but it needs to be hand added.
 •	Datetimes saving to the SQL server has some issues.
